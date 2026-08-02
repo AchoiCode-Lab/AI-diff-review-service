@@ -3,7 +3,7 @@
 Dependency-free Python implementation of the assessment API.
 
 ```sh
-export REVIEW_TOKEN='choose-a-long-random-token'
+export REVIEW_TOKEN='xsolla-review-T9mK7vQ2pL8xN4wR6cJ1hF5aZ3yD0sU
 python3 server.py
 python3 -m unittest -v
 ```
