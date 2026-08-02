@@ -2,7 +2,7 @@
 
 ## Architecture
 
-The dependency-free Python server owns a thread-safe in-memory job store, fixed four-worker executor, idempotency index, content cache, and recorded SSE event history. POST enqueues work; workers transition queued → running → done/failed. The parser retains added hunk lines and their new-file locations. File-aware chunk accounting never splits a file. Findings are deduplicated and ordered globally. A completed byte-identical request creates a completed cache-hit job without provider work. Recorded events make new SSE connections replay the lifecycle identically.
+The dependency-free Python server owns a thread-safe in-memory job store, fixed four-worker executor, idempotency index, content cache, and recorded SSE event history. POST enqueues work, workers transition queued → running → done/failed. The parser retains added hunk lines and their new-file locations. File-aware chunk accounting never splits a file. Findings are deduplicated and ordered globally. A completed byte-identical request creates a completed cache-hit job without provider work. Recorded events make new SSE connections replay the lifecycle identically.
 
 ## Providers
 
@@ -14,7 +14,7 @@ I locally verified health/spec, auth, invalid inputs, mock findings and ordering
 
 ## AI assistance and judgment
 
-I used Codex for implementation and edge-case review. I rejected scanning raw diff text with regex alone: that would match removed/context/header lines and lose the required new-file line numbers, so the service parses unified hunks first.
+I used Codex for implementation and edge-case review. I rejected scanning raw diff text with regex alone that would match removed/context/header lines and lose the required new-file line numbers, so the service parses unified hunks first.
 
 ## More time
 
